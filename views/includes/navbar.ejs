@@ -1,0 +1,41 @@
+
+<nav id="navid" class="navbar navbar-expand-md bg-body-tertiary  border-bottom sticky-top">
+   
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"> <i class="fa-brands fa-airbnb"></i>WANDERLUST</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/listings">Home</a>
+        <a class="nav-link" href="/listings/new">Add New</a>
+       
+        </div>
+        <div class="navbar-nav ms-auto">
+           <% if (!currUser) { %>
+         <form action="/signup" method="GET">
+    <button class="nav-link btn btn-link" type="submit">
+        signup
+    </button>
+</form>
+ <form action="/login" method="GET">
+    <button class="nav-link btn btn-link" type="submit">
+        Login
+    </button>
+</form>
+<% }  else { %>
+      <form action="/logout" method="POST">
+    <button class="nav-link btn btn-link" type="submit">
+        Logout
+    </button>
+</form>
+
+ <% } %>
+        </div>
+        
+   
+       
+    </div>
+  </div>
+</nav>  

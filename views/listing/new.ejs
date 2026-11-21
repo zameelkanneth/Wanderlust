@@ -1,0 +1,55 @@
+<% layout("/layouts/boilerplate") %>
+    <h1 id="newheading">add new list</h1>
+
+    <form action="/listings/new" method="post" id="listingform"
+    class="needs-validation" data-bs-validate novalidate enctype="multipart/form-data">
+
+    <div class="mb-3">
+    <label for="inputTitle" class="form-label">Title</label>
+    <input type="text" id="inputTitle" name="title"
+           class="form-control" placeholder="Enter title" required>
+           <div class="invalid-feedback">
+    Please enter a title.
+</div>
+</div>
+
+<div class="mb-3" >
+            <label for="inputDescription" class="form-label">Description</label>
+            <textarea name="description" id="inputDescription" class="form-control" placeholder="Describe the place" required></textarea>
+         <div class="invalid-feedback">
+    Please enter a description.
+</div>
+         </div>
+
+<br>
+
+
+<br>
+<div class="form-group">
+            <label for="inputPrice" class="form-label">Price</label>
+            <input type="number" id="inputPrice" name="price" min="0" class="form-control" placeholder="Enter price" required>
+        <div class="invalid-feedback">
+    Please enter the price.
+</div>
+         </div>
+
+<br>
+<div >
+            <label for="inputImage" class="form-label">Image</label>
+            <input type="file" id="inputImage" name="image" class="form-control" 
+            placeholder="upload the image" accept="image/*" required>
+         </div>
+
+<br>
+
+<div class="form-group ">
+            <label for="inputCountry" class="form-label">country</label>
+            <input type="text"  id="inputCountry" name="country" class="form-control" placeholder="Enter country" required>
+         <div class="invalid-feedback">
+    Please enter the coutry name.
+</div>
+         </div>
+<br>
+
+        <button>finish</button>
+    </form>

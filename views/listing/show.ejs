@@ -1,0 +1,102 @@
+<% layout("/layouts/boilerplate") %>
+<h1 id="showheading"><%=individual.title%></h1>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+  <div class="card" style="width: 90%;">
+  <div class="card-body">
+    <img src="<%=individual.image.url%>" class="card-img" alt="list_image">
+    
+    <p class="card-text fg-2"><%=individual.description%></p>
+    <p><b>&#8377;<%=individual.price.toLocaleString('en-IN')%></b>/night</p>
+    <p> country:<%=individual.country%></p>
+    
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="showbutton d-flex justify-content-start gap-2 ms-2">
+
+    <form action="/listings/<%=individual._id %>/edit" method="GET">
+        <button class="btn btn-primary px-4">Edit</button>
+    </form>
+
+    <form action="/listings/<%=individual._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger px-4">Delete</button>
+    </form>
+
+    <form action="/listings" method="GET">
+        <button class="btn btn-secondary px-4">Home</button>
+    </form>
+
+</div>
+<hr>
+
+<h1 id="reviewheading">leave a review</h1>
+<form action="/listings/<%=individual._id%>/reviews"
+      method="post"
+      id="editform"
+      class="needs-validation"
+      data-bs-validate
+      novalidate>
+
+       <div class="mb-3">
+        <label for="inputUser" class="form-label">username</label>
+        <input type="text"
+               id="inputUser"
+               name="username"
+               class="form-control"
+               placeholder="Enter Username"
+               required>
+
+        <div class="invalid-feedback">
+            Please enter a username.
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="inputComment" class="form-label">commemt</label>
+        <textarea 
+               id="inputComment"
+               name="comment"
+               class="form-control"
+               placeholder="leave a comment"
+               required></textarea>
+
+       
+
+        <div class="invalid-feedback">
+            please leave a comment.
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="inputRating" class="form-label">Rating</label>
+    
+
+     <%- include("../includes/ratingstar.ejs") %>
+    </div>
+
+<button class="btn btn-primary mb-3">submit</button>
+
+  </form>
+  <hr>
+<h2 id="allreviewheading">All Reviews</h2>
+
+<% for (let review of individual.reviews) { %>
+
+    <div class="card mb-3 ms-3 reviewdiv">
+        <div class="card-body mb-3">
+            <h5>name: <%= review.username %></h5>
+            <p><%= review.comment %></p>
+              <p class="starability-result" data-rating="<%= review.rating %>"> stars
+  </p>
+               <form action="/listings/<%=individual._id%>/reviews/<%=review._id%>?_method=DELETE" method="Post">
+        <button class="btn btn-dark">Delete</button>
+    </form>
+        </div>
+        
+    </div>
+<% } %>

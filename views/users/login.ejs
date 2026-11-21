@@ -1,0 +1,50 @@
+<% layout("/layouts/boilerplate") %>
+
+<h1 id="loginupheading">login</h1>
+
+<form action="/login"
+      method="post"
+      id="loginform"
+      class="needs-validation"
+      data-bs-validate
+      novalidate>
+
+    <div class="mb-3">
+        <label for="inputUsername" class="form-label">username</label>
+        <input type="text"
+               id="inputUsername"
+               name="username"
+               class="form-control"
+               placeholder="Enter the username"
+               required>
+
+        <div class="invalid-feedback">
+            Please enter a username.
+        </div>
+    </div>
+
+    <br>
+
+
+
+    <div class="mb-3">
+        <label for="inputPassword" class="form-label">Password</label>
+        <input type="password"
+               id="inputPassword"
+               name="password"
+               class="form-control"
+               placeholder="Enter the Password"
+                required>
+
+        <div class="invalid-feedback">
+            Please enter a valid password.
+        </div>
+    </div>
+
+    <br>
+
+
+
+    <button class="btn btn-primary">Finish</button>
+
+</form>
